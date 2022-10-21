@@ -7,12 +7,15 @@ The use of machine learning has been implemented in various ways, including to d
 
 ### Code Explanation
 1. [unsupervised-clustering.py](https://github.com/rhe-naldy/machine-learning-classification-between-suicidal-ideation-and-depression/blob/main/unsupervised-clustering.py)
+
 In this file, we used Uniform Manifold Approximation and Projection (UMAP) to reduce the dimensionality of the word embeddings and then implemented Gaussian Mixture Model (GMM) to cluster the dataset based on probabilities
 
 2. [threshold-based-label-correction.py](https://github.com/rhe-naldy/machine-learning-classification-between-suicidal-ideation-and-depression/blob/main/threshold-based-label-correction.py)
+
 In this file, we implemented a threshold-based label correction with the threshold set to 0.9. The implementation of Gaussian Mixture produced two different labels: the original ground-truth labels and the new unsupervised clustering labels. The new labels will be utilized to correct the ground-truth labels or the original labels. When the produced label has a probability above the tuned threshold, the original label will be replaced by the new label produced by Gaussian Mixture. Otherwise, the original label will not be replaced. By implementing a threshold-based label correction, we avoid the elimination of noisy labels.
 
 3. [model-training.py](https://github.com/rhe-naldy/machine-learning-classification-between-suicidal-ideation-and-depression/blob/main/model-training.py)
+
 In this file, we constructed a Recurrent Neural Network (RNN) as the proposed classifier. Our RNN model implemented a 5-unit Gated Recurrent Unit (GRU) layer as the first layer, utilizing rectified linear unit (ReLU) as the activation function, and he uniform as the kernel initializer. The first layer is then directly flattened, followed by a 64-unit dense layer, utilizing rectified linear unit (ReLU) as the activation function, and he uniform as the kernel initializer. In the end, a sigmoid function was applied to calculate the final output. The model architecture can be seen as below.
 
 ![image](https://user-images.githubusercontent.com/45966986/197165614-c9c4dd27-8a0b-4c95-88f0-0089c0480d8e.png)
