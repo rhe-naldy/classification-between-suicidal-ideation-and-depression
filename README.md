@@ -14,4 +14,5 @@ In this file, we implemented a threshold-based label correction with the thresho
 
 3. [model-training.py](https://github.com/rhe-naldy/machine-learning-classification-between-suicidal-ideation-and-depression/blob/main/model-training.py)
 In this file, we constructed a Recurrent Neural Network (RNN) as the proposed classifier. Our RNN model implemented a 5-unit Gated Recurrent Unit (GRU) layer as the first layer, utilizing rectified linear unit (ReLU) as the activation function, and he uniform as the kernel initializer. The first layer is then directly flattened, followed by a 64-unit dense layer, utilizing rectified linear unit (ReLU) as the activation function, and he uniform as the kernel initializer. In the end, a sigmoid function was applied to calculate the final output. The model architecture can be seen as below.
+
 ![image](https://user-images.githubusercontent.com/45966986/197165614-c9c4dd27-8a0b-4c95-88f0-0089c0480d8e.png)
