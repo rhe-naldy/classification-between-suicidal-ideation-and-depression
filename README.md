@@ -6,4 +6,8 @@
 The use of machine learning has been implemented in various ways, including to detect depression in individuals. However, there is hardly any research done regarding classification between suicidal ideations and depression among individuals through text analysis. Differentiating between depression and suicidal ideation is crucial, considering the difference in treatment between the two mental illness. In this paper, we propose a detection model using Recurrent Neural Network (RNN) in the hopes to improve previous models made by other researchers. By comparing the proposed model with the previous works as the baseline model, we discovered that the proposed model (RNN) performed better than the baseline models, with the accuracy of 86.81%, precision of 97.13%, recall score of 94.69%, f1 score of 95.90%, and area under the curve (AUC) score of 92.84%.
 
 ### Code Explanation
-1. 
+1. [unsupervised-clustering.py](https://github.com/rhe-naldy/machine-learning-classification-between-suicidal-ideation-and-depression/blob/main/unsupervised-clustering.py)
+In this file, we used Uniform Manifold Approximation and Projection (UMAP) to reduce the dimensionality of the word embeddings.
+
+2. [threshold-based-label-correction.py](https://github.com/rhe-naldy/machine-learning-classification-between-suicidal-ideation-and-depression/blob/main/threshold-based-label-correction.py)
+In this file, we implemented a threshold-based label correction 
