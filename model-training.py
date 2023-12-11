@@ -35,7 +35,6 @@ rnn = Sequential()
 rnn.add(Input(shape=(768, 1)))
 rnn.add(layers.GRU(3, return_sequences=True, activation='relu', kernel_initializer='he_uniform'))
 rnn.add(Flatten())
-#rnn.add(Dense(10, activation='relu', kernel_initializer='he_uniform'))
 rnn.add(Dense(64, activation='relu', kernel_initializer='he_uniform'))
 rnn.add(Dense(1, activation='sigmoid'))
 
@@ -67,61 +66,3 @@ print("f1: " + str(f1))
 m5 = tf.keras.metrics.AUC()
 m5.update_state(test_labels, pred)
 print("AUC: " + str(m5.result().numpy()))
-
-'''
-# MLP
-mlp = MLP(hidden_layer_sizes = (128, 64,), activation = 'relu', batch_size = batch_size, max_iter = 1000)
-mlp.fit(train_features, train_labels)
-
-pred = mlp.predict(test_features)
-
-print('Accuracy: %f' % accuracy_score(test_labels, pred))
-print('Precision: %f' % precision_score(test_labels, pred))
-print('Recall: %f' % recall_score(test_labels, pred))
-print('f1: %f' % f1_score(test_labels, pred))
-fpr, tpr, thresholds = metrics.roc_curve(test_labels, pred)
-print('AUC: %f' % metrics.auc(fpr, tpr))
-'''
-'''
-# Convolutional Neural Network
-
-cnn = Sequential()
-
-cnn_path = "cnn"
-
-cnn.add(Input(shape=(768, 1)))
-cnn.add(Conv1D(filters= filters, kernel_size = kernel, activation='relu'))
-cnn.add(Dropout(0.25))
-cnn.add(Flatten())
-cnn.add(Dense(64, activation='relu', kernel_initializer='he_uniform'))
-cnn.add(Dense(1, activation='sigmoid'))
-
-cnn.compile(optimizer='adam',
-              loss='binary_crossentropy',
-              metrics=['accuracy'])
-
-mc = ModelCheckpoint(cnn_path + ".h5", monitor='val_accuracy', mode='max', verbose=1, save_best_only=True)
-cnn.summary()
-cnn.fit(train_features, train_labels, epochs=epochs, batch_size = batch_size)
-pred = cnn.predict(test_features)
-
-m1 = tf.keras.metrics.Accuracy()
-m1.update_state(test_labels, pred)
-print("Accuracy: " + str(m1.result().numpy()))
-
-m2 = tf.keras.metrics.Precision()
-m2.update_state(test_labels, pred)
-print("Precision: " + str(m2.result().numpy()))
-
-m3 = tf.keras.metrics.Recall()
-m3.update_state(test_labels, pred)
-print("Recall: " + str(m3.result().numpy()))
-
-f1 = 2 * (m3.result().numpy() * m2.result().numpy()) / (m3.result().numpy() + m2.result().numpy())
-print("f1: " + str(f1))
-
-m5 = tf.keras.metrics.AUC()
-m5.update_state(test_labels, pred)
-print("AUC: " + str(m5.result().numpy()))
-
-'''
